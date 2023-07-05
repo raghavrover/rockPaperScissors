@@ -44,9 +44,9 @@ const choicesList = [
 ]
 
 const playerStatus = {
-  lost: 'LOST',
-  draw: 'DRAW',
-  won: 'WON',
+  lost: 'YOU LOSE',
+  draw: 'IT IS DRAW',
+  won: 'YOU WON',
 }
 
 const playerWinningsChoices = {
@@ -86,21 +86,21 @@ class RockPaperScissorsGame extends Component {
   }
 
   getResult = (id1, id2) => {
+    const {score} = this.state
     switch (id2) {
       case id1:
-        return {score: 0, result: playerStatus.draw, isGameOver: true}
+        return {score, result: playerStatus.draw, isGameOver: true}
 
       case playerWinningsChoices[id1]:
-        return {score: 1, result: playerStatus.won, isGameOver: true}
+        return {score: score + 1, result: playerStatus.won, isGameOver: true}
 
       default:
-        return {score: -1, result: playerStatus.lost, isGameOver: true}
+        return {score: score - 1, result: playerStatus.lost, isGameOver: true}
     }
   }
 
   resetTheGame = () => {
     this.setState({
-      score: 0,
       result: '',
       isGameOver: false,
       playerChoice: '',
@@ -144,16 +144,16 @@ class RockPaperScissorsGame extends Component {
         <ChoicesContainer>
           <PlayerChoiceContainer>
             <PlayerText>YOU</PlayerText>
-            <ChoiceItemImage src={playerChoice} />
+            <ChoiceItemImage src={playerChoice} alt="your choice" />
           </PlayerChoiceContainer>
           <PlayerChoiceContainer>
             <PlayerText>OPPONENT</PlayerText>
-            <ChoiceItemImage src={opponentChoice} />
+            <ChoiceItemImage src={opponentChoice} alt="opponent choice" />
           </PlayerChoiceContainer>
         </ChoicesContainer>
 
         <PlayerStatus>{result}</PlayerStatus>
-        <RulesBtn onClick={this.resetTheGame}>Play Again</RulesBtn>
+        <RulesBtn onClick={this.resetTheGame}>PLAY AGAIN</RulesBtn>
       </GameResultCard>
     )
   }
@@ -166,11 +166,11 @@ class RockPaperScissorsGame extends Component {
         <GameContainer>
           <GameNameAndResultContainer>
             <GameName>
-              ROCK
+              Rock
               <br />
-              PAPERS
+              Paper
               <br />
-              SCISSORS
+              Scissors
             </GameName>
 
             <GameResultContainer>
@@ -180,7 +180,7 @@ class RockPaperScissorsGame extends Component {
           </GameNameAndResultContainer>
           {isGameOver ? this.renderGameResultCard() : this.renderChoiceList()}
           <Popup
-            trigger={<RulesBtn rulesBtn>Rules</RulesBtn>}
+            trigger={<RulesBtn rulesBtn>RULES</RulesBtn>}
             modal
             overlayStyle={overlayStyles}
           >

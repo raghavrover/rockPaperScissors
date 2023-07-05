@@ -15,7 +15,7 @@ const GameChoiceItem = props => {
   return (
     <ChoiceListItem>
       <ChoiceItemBtn onClick={onSelecting} data-testid={dataTestid}>
-        <ChoiceItemImage src={imageUrl} />
+        <ChoiceItemImage src={imageUrl} alt={id} />
       </ChoiceItemBtn>
     </ChoiceListItem>
   )

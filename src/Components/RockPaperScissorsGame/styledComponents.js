@@ -73,7 +73,7 @@ export const ScoreText = styled.p`
   }
 `
 
-export const Score = styled.h1`
+export const Score = styled.p`
   margin-top: 0;
   padding-top: 0;
 
@@ -170,7 +170,7 @@ export const ChoiceItemImage = styled.img`
   }
 `
 
-export const PlayerStatus = styled.h1`
+export const PlayerStatus = styled.p`
   font-family: 'Roboto';
   font-size: 18px;
   font-weight: 500;
