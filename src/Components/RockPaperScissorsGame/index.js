@@ -56,7 +56,7 @@ const playerWinningsChoices = {
 }
 
 const overlayStyles = {
-  backgroundOpacity: '0.5',
+  backgroundColor: '#223a5f',
 }
 
 class RockPaperScissorsGame extends Component {
